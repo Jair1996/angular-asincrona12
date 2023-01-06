@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-contact-form',
@@ -17,10 +22,7 @@ export class ContactFormComponent {
 
   constructor(private fb: FormBuilder) {}
 
-  isTheFieldInvalid(control: string) {
-    return (
-      this.contactForm.controls[control].errors &&
-      this.contactForm.controls[control].touched
-    );
+  getControl(control: string): FormControl {
+    return this.contactForm.get(control) as FormControl;
   }
 }
