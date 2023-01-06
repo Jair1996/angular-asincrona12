@@ -28,6 +28,15 @@ export class IsValidDirective implements OnInit {
   }
 
   changeColorIfIsInvalid() {
+    if (!this.control.touched) {
+      this.$element.classList.remove(
+        'border-blue-500',
+        'border-red-500',
+        'focus:border-red-600'
+      );
+      return;
+    }
+
     if (this.control.invalid) {
       this.$element.classList.add('border-red-500', 'focus:border-red-600');
       this.$element.classList.remove('border-blue-500');
